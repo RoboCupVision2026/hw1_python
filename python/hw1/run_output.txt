@@ -1,0 +1,174 @@
+全部 16 道题的运行结果（每条命令都在独立空目录里以默认输入执行）
+
+===== q01_three_digit_numbers.py =====
+用 1、2、3、4 能组成 24 个互不相同且无重复数字的三位数：
+123  124  132  134  142  143  213  214
+231  234  241  243  312  314  321  324
+341  342  412  413  421  423  431  432
+
+===== q02_sort_three_numbers.py =====
+请输入三个整数（空格或逗号分隔）: 没有输入三个整数，改用示例数据: 3 1 2
+输入: x=3, y=1, z=2
+交换法由小到大输出: 1 2 3
+列表排序由小到大输出: 1 2 3
+
+===== q03_fibonacci.py =====
+斐波那契数列前 20 项：
+    0      1      1      2      3      5      8     13     21     34
+   55     89    144    233    377    610    987   1597   2584   4181
+第 20 项: 4181
+
+===== q04_digit_count_and_reverse.py =====
+请输入一个正整数: 没有输入有效正整数，改用示例数据: 12345
+输入的正整数: 12345
+它是 5 位数
+整数法逐位分解: 5 4 3 2 1
+逆序打印各位数字: 5 4 3 2 1
+逆序后的整数: 54321
+
+===== q05_palindrome.py =====
+请输入一个正整数: 没有输入有效正整数，改用示例数据: 12321
+12321 是回文数（字符串法: True，整数法: True）
+123321 是回文数（字符串法: True，整数法: True）
+12345 不是回文数（字符串法: False，整数法: False）
+
+===== q06_find_bug.py =====
+题目代码：
+  if __name__ == '__main__':
+      list = list(range(1000))
+      for idx in range(len(list)):
+          if list[idx] % 2 == 1:
+              list.pop(idx)
+
+bug 在哪：
+  1. range(len(list)) 只在循环开始时算一次长度，随后 list.pop 让列表变短，
+     索引仍然走到原来的上限，于是 list[idx] 越界，抛出 IndexError。
+  2. 删除元素后后面的元素整体前移一位，下一次循环 idx 加 1 会跳过紧邻的那个元素，
+     即使不报错也会漏删奇数。
+  3. 列表是可变对象，循环里修改它的长度，下标与元素的一一对应关系就被破坏，
+     而 range 生成的下标序列是固定的，不跟着变。
+
+运行原代码的结果: IndexError: list index out of range
+
+倒序删除: 剩余 500 个元素，全是偶数: True，前 5 个: [0, 2, 4, 6, 8]
+列表推导式: 剩余 500 个元素，全是偶数: True，前 5 个: [0, 2, 4, 6, 8]
+while 修正下标: 剩余 500 个元素，全是偶数: True，前 5 个: [0, 2, 4, 6, 8]
+切片取偶数位: 剩余 500 个元素，全是偶数: True，前 5 个: [0, 2, 4, 6, 8]
+
+===== q07_josephus.py =====
+233 个人围成一圈，从 1 开始报数，报到 3 的退出
+第 1 个退出的是 3 号，剩 232 人
+第 2 个退出的是 6 号，剩 231 人
+第 3 个退出的是 9 号，剩 230 人
+第 4 个退出的是 12 号，剩 229 人
+第 5 个退出的是 15 号，剩 228 人
+一共退出 232 人
+最后剩下的是原来第 227 号的那位
+
+===== q08_person_student.py =====
+Person 对象的 personInfo():
+姓名: 张三，年龄: 35，性别: 男
+
+Student 对象重写后的 personInfo():
+姓名: 梁煜炜，年龄: 20，性别: 男
+学院: 计算机学院，班级: 计算机 2401 班
+
+print(person) 调用 __str__: Person(姓名=张三, 年龄=35, 性别=男)
+print(student) 调用 __str__: Student(姓名=梁煜炜, 年龄=20, 性别=男, 学院=计算机学院, 班级=计算机 2401 班)
+Student 是 Person 的子类: True
+方法解析顺序 MRO: ['Student', 'Person', 'object']
+
+===== q09_random_number_file.py =====
+已创建 <工作目录>/data.txt
+文件内容: 100000 行，每行一个 1~100 的随机整数
+前 5 行: [39, 42, 48, 78, 48]
+最小值 1，最大值 100，平均值 50.41
+文件大小: 292003 字节
+
+===== q10_create_sequential_files.py =====
+目录: <工作目录>/img
+共创建 100 个文件，文件名互不相同: True
+前 10 个: YDQ7.png 0UHH.png 62GH.png PT3E.png TDS7.png X6QK.png P5GT.png 1ZSP.png IWGH.png K2G4.png
+
+===== q11_rename_to_jpg.py =====
+目录: <工作目录>/img，改名前的文件数: 100
+随机改名的文件数: 50
+改名后: .png 共 50 个，.jpg 共 50 个
+  LSGY.png -> LSGY.jpg
+  ZOTY.png -> ZOTY.jpg
+  Q5EE.png -> Q5EE.jpg
+  J7QA.png -> J7QA.jpg
+  YMMV.png -> YMMV.jpg
+  5AVP.png -> 5AVP.jpg
+  U18Q.png -> U18Q.jpg
+  LC7P.png -> LC7P.jpg
+  X676.png -> X676.jpg
+  BFXI.png -> BFXI.jpg
+
+===== q12_file_second_column_stats.py =====
+已创建 <工作目录>/matrix.csv，10 行 3 列
+   48, 59, 53
+   49, 85, 54
+   15, 54, 90
+   11, 36, 68
+   17, 54, 37
+    1, 79,100
+   47, 61, 18
+   36, 19, 27
+   80, 20, 47
+   86, 91, 67
+第二列: [59, 85, 54, 36, 54, 79, 61, 19, 20, 91]
+最大值: 91
+最小值: 19
+平均值: 55.80
+中位数: 56.5
+排序后: [19, 20, 36, 54, 54, 59, 61, 79, 85, 91]
+
+===== q13_file_copy.py =====
+请输入要生成的行数: 没有输入有效行数，改用默认值 10
+已创建 <工作目录>/test.txt，共 10 行随机 ASCII 可打印字符
+已复制为 <工作目录>/copy_test.txt
+  1: |a{)%_
+  2: OdOO]eqx,t
+  3: ~S?$k;/
+  4: =Jl~&^*Ck
+  5: }GE@p}QVHQ|JcD
+  6: }vpA'{\F0zdmah;
+  7: 8/m75c
+  8: kJ}e,]1]}
+  9: BCf0UtvSrB{
+  10: e 2OH1dmX2
+两个文件大小: 107 字节 / 107 字节
+内容完全相同: True
+
+===== q14_file_append_python.py =====
+<工作目录>/test.txt 不存在，新建了 10 行的示例文件
+修改前共 10 行，前 3 行:
+  PLHNYW[/f'5(USmVI@%
+  U*vBS+P<)d47q-5@uT>
+  p$GBmbWK
+用 seek/tell 定位：写入前指针在 0，写入后指针在 148
+修改后共 12 行，第一行: python，最后一行: python
+再用重写方式追加一次，共 14 行，首行/末行: python / python
+
+===== q15_file_diff.py =====
+test.txt / copy_test.txt 不存在，已重新生成
+对比 test.txt 与 copy_test.txt，共 10 行
+两个文件每一行内容都相同，没有不同的行
+验证对比逻辑：故意把 copy_test_modified.txt 的第 10 行改掉后再比，不同的行号: [10]
+
+===== q16_batch_create_and_rename.py =====
+请输入要创建的文件个数 i: 没有输入有效数字，改用默认值 5
+请输入每个文件的行数 j: 没有输入有效数字，改用默认值 3
+已在 <工作目录>/test 创建 5 个文件，每个 3 行随机字符
+处理前示例 note_001.txt:
+  DOhZVc3U
+  DTXbmMbt
+  pg0a0Qju
+已改名并追加后缀的文件: 5 个
+文件名示例: note_001-python.txt note_002-python.txt note_003-python.txt
+处理后示例 note_001-python.txt:
+  DOhZVc3U-python
+  DTXbmMbt-python
+  pg0a0Qju-python
+
