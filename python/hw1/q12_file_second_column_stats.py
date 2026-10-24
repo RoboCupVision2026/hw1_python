@@ -3,6 +3,10 @@ import statistics
 from pathlib import Path
 
 
+def work_dir():
+    return Path(__file__).resolve().parent
+
+
 def create_matrix_file(path, rows=10, columns=3, low=1, high=100):
     with path.open("w", encoding="utf-8") as file:
         for _ in range(rows):
@@ -16,11 +20,11 @@ def read_matrix(path):
 
 
 def main():
-    path = Path.cwd() / "matrix.csv"
+    path = work_dir() / "matrix.csv"
     create_matrix_file(path)
     matrix = read_matrix(path)
 
-    print(f"已创建 {path}，{len(matrix)} 行 {len(matrix[0])} 列")
+    print(f"已创建 {path.name}，{len(matrix)} 行 {len(matrix[0])} 列")
     for row in matrix:
         print("  " + ",".join(f"{value:>3}" for value in row))
 

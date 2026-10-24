@@ -4,9 +4,13 @@ import string
 from pathlib import Path
 
 
-def ensure_files(work_dir, rows=10):
-    source = work_dir / "test.txt"
-    target = work_dir / "copy_test.txt"
+def work_dir():
+    return Path(__file__).resolve().parent
+
+
+def ensure_files(directory, rows=10):
+    source = directory / "test.txt"
+    target = directory / "copy_test.txt"
     if source.exists() and target.exists():
         return source, target
     printable = "".join(ch for ch in string.printable if ch not in "\t\n\r\x0b\x0c")
@@ -37,8 +41,8 @@ def diff_lines(left, right):
 
 
 def main():
-    work_dir = Path.cwd()
-    source, target = ensure_files(work_dir)
+    directory = work_dir()
+    source, target = ensure_files(directory)
     total, different = diff_lines(source, target)
 
     print(f"对比 {source.name} 与 {target.name}，共 {total} 行")
@@ -49,14 +53,14 @@ def main():
     else:
         print("两个文件每一行内容都相同，没有不同的行")
 
-    probe = work_dir / "copy_test_modified.txt"
+    probe = directory / "copy_test_modified.txt"
     lines = read_lines(source)
     target_line = random.randrange(len(lines))
     lines[target_line] = lines[target_line] + "-changed"
     probe.write_text("\n".join(lines) + "\n", encoding="utf-8")
     total, different = diff_lines(source, probe)
-    print(f"验证对比逻辑：故意把 copy_test_modified.txt 的第 {target_line + 1} 行改掉后再比，"
-          f"不同的行号: {[number for number, _, _ in different]}")
+    print(f"验证对比逻辑：故意改掉第 {target_line + 1} 行后再比，不同的行号: "
+          f"{[number for number, _, _ in different]}")
     probe.unlink()
 
 

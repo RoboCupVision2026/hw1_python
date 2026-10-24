@@ -4,6 +4,10 @@ import string
 from pathlib import Path
 
 
+def work_dir():
+    return Path(__file__).resolve().parent
+
+
 def read_count(default=10):
     try:
         text = input("请输入要生成的行数: ").strip()
@@ -25,15 +29,15 @@ def create_test_file(path, rows):
 
 def main():
     rows = read_count()
-    work_dir = Path.cwd()
-    source = work_dir / "test.txt"
-    target = work_dir / "copy_test.txt"
+    directory = work_dir()
+    source = directory / "test.txt"
+    target = directory / "copy_test.txt"
 
     create_test_file(source, rows)
     shutil.copyfile(source, target)
 
-    print(f"已创建 {source}，共 {rows} 行随机 ASCII 可打印字符")
-    print(f"已复制为 {target}")
+    print(f"已创建 {source.name}，共 {rows} 行随机 ASCII 可打印字符")
+    print(f"已复制为 {target.name}")
     with source.open(encoding="utf-8") as file:
         for index, line in enumerate(file, start=1):
             print(f"  {index}: {line.rstrip()}")

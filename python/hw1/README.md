@@ -1,6 +1,8 @@
 # hw1_python 作业提交（梁煜炜）
 
-图片题目中已打勾（红色手写对勾）的题目共 16 道，全部用 `.py` 实现，放在 `python/hw1/` 目录下，脚本都是独立可运行的，只用标准库。
+图片题目中已打勾（红色手写对勾）的题目共 16 道，全部用 `.py` 实现。
+
+**所有文件都在 `python/hw1/` 这一个文件夹里**：16 个脚本、README、以及各题生成的全部产物（包括第四、五题的 100 个随机命名文件），没有子目录。脚本只用标准库，可以独立运行。
 
 ## 题目与文件对应
 
@@ -14,18 +16,18 @@
 | `q06_find_bug.py` | 找 bug 页 第六题 | 找出并说明删除列表奇数代码的 bug，并给出改正方案 |
 | `q07_josephus.py` | 找 bug 页 第七题 | 233 人围成一圈报数，报到 3 的人退出，问最后剩下第几号 |
 | `q08_person_student.py` | 类与魔术方法页 第三题 | Person 类 + Student 子类，重写 personInfo，重写 `__str__` |
-| `q09_random_number_file.py` | 随机数文件页 第三题 | 创建 data.txt，共 100000 行，每行一个 1~100 的随机整数 |
-| `q10_create_sequential_files.py` | 随机数文件页 第四题 | 新建 img 目录，创建 100 个文件名互不相同的文件（形如 X4G5.png） |
+| `q09_random_number_file.py` | 随机数文件页 第三题 | 生成 data.txt，共 100000 行，每行一个 1~100 的随机整数 |
+| `q10_create_sequential_files.py` | 随机数文件页 第四题 | 创建 100 个文件名互不相同的文件（形如 X4G5.png） |
 | `q11_rename_to_jpg.py` | 随机数文件页 第五题 | 在上一题基础上，随机把 50 个文件改名为 .jpg 结尾 |
 | `q12_file_second_column_stats.py` | 第 7 天 第一题 | 生成 10 行 3 列逗号分隔的随机数文件，输出第二列的最大/最小/平均/中位数 |
 | `q13_file_copy.py` | 第 7 天 第二题 | 生成含 i 行随机 ASCII 可打印字符的 test.txt，并复制为 copy_test.txt |
 | `q14_file_append_python.py` | 第 7 天 第三题 | 读取 test.txt，在文件开头和结尾处追加字符串 python |
 | `q15_file_diff.py` | 第 7 天 第四题 | 逐行比较 test.txt 与 copy_test.txt，输出内容不同的行号 |
-| `q16_batch_create_and_rename.py` | 第 7 天 第五题 | 新建 test 目录，创建 i 个文件、每个 j 行随机字符，再给文件名和每一行末尾加 -python |
+| `q16_batch_create_and_rename.py` | 第 7 天 第五题 | 创建 i 个文件、每个 j 行随机字符，再给文件名和每一行末尾加 -python |
 
 ## 运行方式
 
-需要 Python 3.8 及以上。
+需要 Python 3.8 及以上，进入这个文件夹直接跑即可：
 
 ```bash
 cd python/hw1
@@ -34,28 +36,21 @@ python3 q01_three_digit_numbers.py
 
 带输入的题（排序、数字位数、回文数、生成行数、文件个数与行数）在交互模式下按提示输入；直接回车或不输入时会使用脚本内置的示例值，方便一键运行验证。
 
-文件类题目会在**当前工作目录**下生成 `data.txt`、`matrix.csv`、`test.txt`、`copy_test.txt`、`img/`、`test/` 等产物，所以建议先进入一个空目录再运行，例如：
-
-```bash
-mkdir -p /tmp/hw1_run && cd /tmp/hw1_run
-python3 /path/to/python/hw1/q10_create_sequential_files.py
-```
-
-`q11` 依赖 `img/` 里已有文件，`q14` 依赖 `test.txt`，`q15` 依赖 `test.txt` 与 `copy_test.txt`；这些脚本在缺少前置文件时会自动补建，单独运行也不会报错。
+文件类题目的产物统一写在**脚本所在的这个文件夹**（即题目所说的“当前目录”），所以在任何路径下执行都会落到同一处，不会出现文件散落或再建子目录。`q11` 只处理形如 `X4G5.png` 的随机文件名，不会误改 `.py` 或数据文件；`q14` 依赖 `test.txt`、`q15` 依赖 `test.txt` 与 `copy_test.txt`，缺文件时会自动补建，单独运行也不会报错。
 
 ## 已提交的生成产物
 
-各题的运行产物全部随代码一起提交，都是跑一遍即可复现的随机数据，可直接查看：
+各题产物都已在同一个文件夹里随代码提交，都是跑一遍即可复现的随机数据：
 
 | 产物 | 来源 | 说明 |
 | --- | --- | --- |
-| `img/`（100 个文件） | q10、q11 | 100 个互不相同的随机文件名，形如 `XTDW.png`；其中 50 个已被 q11 随机改名为 `.jpg`，所以是 50 个 `.png` + 50 个 `.jpg` |
+| 100 个随机命名文件 | q10、q11 | 文件名形如 `XTDW.png`，互不相同；其中 50 个已被 q11 随机改名为 `.jpg`，所以是 50 个 `.png` + 50 个 `.jpg`，全部与脚本同级 |
 | `img_file_list.txt` | q10、q11 | 这 100 个文件名的完整清单，带序号与后缀统计 |
 | `data.txt` | q09 | 100000 行，每行一个 1~100 的随机整数，约 288 KB |
 | `matrix.csv` | q12 | 10 行 3 列、逗号分隔的随机数 |
 | `test.txt` / `copy_test.txt` | q13、q14 | 前者 10 行随机 ASCII 可打印字符，复制为后者；`test.txt` 已被 q14 在开头和结尾各追加 `python`，现在 14 行 |
-| `test/`（4 个文件） | q16 | 每个 2 行随机字符，文件名和每一行末尾都加了 `-python` |
-| `run_output.txt` | 全部 16 题 | 每条命令在独立空目录里以默认输入执行的完整输出，不装环境也能看到结果 |
+| `note_001-python.txt` ~ `note_004-python.txt` | q16 | 每个 2 行随机字符，文件名和每一行末尾都加了 `-python` |
+| `run_output.txt` | 全部 16 题 | 每条命令在空目录里以默认输入执行的完整输出，不装环境也能看到结果 |
 
 重新运行脚本会覆盖这些随机数据，属于正常现象。
 
