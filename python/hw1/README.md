@@ -43,6 +43,15 @@ python3 /path/to/python/hw1/q10_create_sequential_files.py
 
 `q11` 依赖 `img/` 里已有文件，`q14` 依赖 `test.txt`，`q15` 依赖 `test.txt` 与 `copy_test.txt`；这些脚本在缺少前置文件时会自动补建，单独运行也不会报错。
 
+## 已提交的生成产物
+
+第四、第五题生成的文件是作业结果，已经随代码一起提交，可以直接查看：
+
+- `python/hw1/img/`：100 个随机命名的文件，文件名互不相同，形如 `XTDW.png`；其中 50 个已被第五题随机改名为 `.jpg` 结尾，所以目录里是 50 个 `.png` + 50 个 `.jpg`。
+- `python/hw1/img_file_list.txt`：这 100 个文件名的完整清单，带序号和后缀分布统计。
+
+其余题目产生的中间文件（`data.txt`、`matrix.csv`、`test.txt`、`copy_test.txt`、`test/`）写进了 `.gitignore`，不入库，运行脚本时会重新生成。
+
 ## 说明
 
 - `q06` 的输出里包含 bug 原因分析：`range(len(list))` 的长度在循环开始时固定，`list.pop` 让列表变短后索引越界（IndexError）；同时删除元素会让后面的元素前移，导致漏删。改正方案给了倒序遍历、列表推导式、while 修正下标、切片四种，都验证过结果是 500 个偶数。
