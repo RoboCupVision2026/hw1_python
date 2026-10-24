@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+data.txt
+matrix.csv
+test.txt
+copy_test.txt
+copy_test_modified.txt
+img/
+test/
