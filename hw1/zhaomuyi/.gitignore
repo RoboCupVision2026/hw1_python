@@ -1,0 +1,8 @@
+# 文件题运行时生成的测试产物，不提交到仓库
+test.txt
+copy_test.txt
+data.txt
+data_12.csv
+img/
+test_batch/
+__pycache__/
