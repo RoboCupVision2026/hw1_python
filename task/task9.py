@@ -1,8 +1,5 @@
 #文件输入
 from random import randint
-
-from numpy.ma.extras import average
-
 with open("random_data.txt","w",encoding="utf-8") as f:
     for i in range(10):
         f.write(str(randint(1,100))+','+str(randint(1,100))+','+str(randint(1,100))+'\n')
