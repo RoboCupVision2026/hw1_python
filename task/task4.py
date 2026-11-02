@@ -5,5 +5,3 @@ print("这个正整数有" + str(len(x)) + "位")
 for i in range(len(x)):
     x,y = x[0:len(x)-1],y + x[len(x)-1]
 print(y)
-
-
