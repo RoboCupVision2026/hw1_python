@@ -7,7 +7,6 @@ for i in range(n):
         line = line + chr(random.randint(32, 126))
     f.write(line + "\n")
 f.close()
-# 复制
 f1 = open("test.txt", "r")
 f2 = open("copy_test.txt", "w")
 for line in f1:
@@ -30,7 +29,6 @@ lines2 = f2.readlines()
 f2.close()
 if len(lines1) != len(lines2):
     print("两个文件的行数不一样")
-# 两个文件行数可能不一样，取短的那个来比
 n = len(lines1)
 if len(lines2) < n:
     n = len(lines2)
