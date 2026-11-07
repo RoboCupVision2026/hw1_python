@@ -7,7 +7,6 @@ for i in range(n):
         line = line + chr(random.randint(32, 126))
     f.write(line + "\n")
 f.close()
-# 复制
 f1 = open("test.txt", "r")
 f2 = open("copy_test.txt", "w")
 for line in f1:
